@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strictNullChecks": true,
+    "outDir": "./dist",
+    "allowJs": false,
+    "target": "es6",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "sourceMap": true,
+    "declaration": true,
+    "experimentalDecorators": true,
+    "types": ["jest","node",],
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+  },
+  "include": [
+    "./src/**/*",
+    "./test/**/*"
+  ]
+}
