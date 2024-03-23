@@ -13,8 +13,8 @@ class Position {
       this.board = position.board
       this.moves = position.moves
     }else{
-      this.board = []
-      this.height = []
+      this.board =  Array(Position.WIDTH).fill(null).map(() => Array(Position.HEIGHT).fill(0));
+      this.height = Array(Position.WIDTH).fill(0)
       this.moves = 0
     }
   }
@@ -24,15 +24,24 @@ class Position {
   }
 
   play = (column: number): void => {
-    this.board[column][this.height[column]] = 1+this.moves%2;
-    this.height[column]++;
-    this.moves++;
+    console.log("ValidMove")
+    if(this.height[column] < Position.HEIGHT ){
+      const player: number = 1+this.moves%2; 
+      this.board[column][this.height[column]] = player
+      this.height[column]++;
+      this.moves++;
+    }else{
+      console.log("Invalid Move")
+    }
+
   }
 
   playSequence = (sequence: string): void => {
     for(let i = 0; i<sequence.length;i++){
-      // let column = sequence.charAt(i) - '1'
+      const column: number = parseInt(sequence.charAt(i)) - 1
+      this.play(column)
     }
+    console.log(this.board)
   }
   
   isWinningMove = (column: number): boolean => {
