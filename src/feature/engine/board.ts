@@ -23,7 +23,6 @@ class Board {
   getNextAvailableRow = (column: number): number => {
     for (let i = 0; i < Board.HEIGHT; i++) {
       if (this.board[i][column] === 0) {
-        console.log(i)
         return i
       }
     }
@@ -45,10 +44,11 @@ class Board {
   }
 
   printBoard = (): void => {
-    console.log(this.board)
+    let boardString = ''
     for (let i = Board.HEIGHT - 1; i >= 0; i--) {
-      console.log(this.board[i])
+      boardString = boardString + this.board[i].join('') + '\n'
     }
+    console.log(boardString)
   }
 
   winningMove = (): boolean => {
@@ -108,9 +108,9 @@ class Board {
       for (let row = 3; row < Board.HEIGHT; row++) {
         if (
           this.board[row][column] === player &&
-            this.board[row + 1][column + 1] === player &&
-            this.board[row + 2][column + 2] === player &&
-            this.board[row + 3][column + 3] === player
+          this.board[row - 1][column + 1] === player &&
+          this.board[row - 2][column + 2] === player &&
+          this.board[row - 3][column + 3] === player
         ) {
           return true
         }
