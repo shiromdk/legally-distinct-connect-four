@@ -32,6 +32,10 @@ class Solver{
         return bestScore
 
     }
+
+    getNodeCount = ():number=>{
+        return this.nodeCount
+    }
 }
 
 export default Solver
