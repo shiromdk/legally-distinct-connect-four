@@ -51,8 +51,8 @@ class Board {
     console.log(boardString)
   }
 
-  winningMove = (): boolean => {
-    return true
+  hasWon = (player: number): boolean => {
+    return this.winningMoveHorizontal(player) || this.winningMoveVertical(player) || this.winningMoveDiagonalNegative(player) || this.winningMoveDiagonalPositive(player)
   }
 
   winningMoveHorizontal = (player: number): boolean => {
@@ -117,6 +117,11 @@ class Board {
       }
     }
     return false
+  }
+
+  scorePosition = (player: number): number => {
+
+    return 0
   }
 }
 
